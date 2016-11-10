@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("KebBot.Data")]
+[assembly: AssemblyTitle("KetBot.Data")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("KebBot.Data")]
+[assembly: AssemblyProduct("KetBot.Data")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("c1c1af81-c11c-49f0-9b44-531c0e05ee06")]
+[assembly: Guid("417dd3e0-758a-4a89-8f05-dff2af37a6d6")]
 
 // Version information for an assembly consists of the following four values:
 //
