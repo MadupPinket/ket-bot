@@ -1,0 +1,109 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    >
+    	<RelativeLayout 
+    	android:id="@+id/advice_top_layout"
+		android:layout_width="match_parent"
+		android:layout_height="55dp"
+		android:layout_alignParentTop="true"
+		android:background="#3d90ff"
+		>	
+			<ImageView
+		    android:id="@+id/back"
+	     	android:layout_width="32dp"
+	        android:layout_height="32dp"
+	        android:layout_alignParentLeft="true"
+	        android:layout_centerVertical="true"
+	        android:layout_marginLeft="7dp"
+	        android:background="@drawable/ic_arrow_back_white"
+	        />
+		
+	    	<ImageView
+		    android:id="@+id/center"
+	     	android:layout_width="90dp"
+	        android:layout_height="33dp"
+	        android:layout_centerHorizontal="true"
+	        android:layout_centerVertical="true"
+	        android:background="@drawable/ic_home_white"
+	        android:focusable="true"
+	        android:focusableInTouchMode="true"
+	        />
+	    	
+	    	<ImageView
+		    android:id="@+id/setting"
+	     	android:layout_width="32dp"
+	        android:layout_height="32dp"
+	        android:layout_alignParentRight="true"
+	        android:layout_centerVertical="true"
+	        android:layout_marginRight="7dp"
+	        android:background="@drawable/ic_settings_white"
+	        />
+		</RelativeLayout>
+		
+    	<GridView
+        android:id="@+id/advice_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/advice_top_layout"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="49dp"
+        android:stretchMode="columnWidth"
+        android:numColumns="1" 
+        android:background="#f0f0f0"
+        >
+        </GridView>
+    	
+    	<RelativeLayout 
+    	android:id="@+id/advice_input_layout"
+		android:layout_width="match_parent"
+		android:layout_height="49dp"
+		android:layout_alignParentBottom="true"
+		android:background="#e4e7e8"
+		>
+	    	<RelativeLayout 
+	    	android:id="@+id/advice_input_layout2"
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:layout_marginLeft="7dp"
+			android:layout_marginRight="7dp"
+			android:layout_alignParentBottom="true"
+			android:background="#e4e7e8"
+			>
+<!-- 				<Button -->
+<!-- 			    android:id="@+id/uploadpicture" -->
+<!-- 		     	android:layout_width="22.5dp" -->
+<!-- 		        android:layout_height="22.5dp" -->
+<!-- 		        android:layout_centerVertical="true" -->
+<!-- 		        android:background="@drawable/uploadpicture" -->
+<!-- 		        /> -->
+			
+		    	<EditText
+			    android:id="@+id/advice_input"
+		     	android:layout_width="279dp"
+		        android:layout_height="30dp"
+		        android:layout_centerVertical="true"
+		        android:layout_marginRight="45dp"
+		        android:hint="궁금하신 내용의 숫자는 어떻게 되시나요?"
+		        android:paddingLeft="7dp"
+		        android:paddingTop="4dp"
+		        android:textColor="#222222"
+		        android:textSize="12.5dp"
+		        android:background="#ffffff"
+		        android:singleLine="true"
+		        />
+				
+		    	<Button
+			    android:id="@+id/advice_done"
+		     	android:layout_width="60dp"
+		        android:layout_height="33dp"
+		        android:layout_centerVertical="true"
+		        android:layout_alignParentRight="true"
+		        android:layout_marginLeft="7dp"
+		        android:background="@drawable/ic_send_message_disabled"
+		        />
+	    	</RelativeLayout>  
+		</RelativeLayout>   				
+</RelativeLayout>
