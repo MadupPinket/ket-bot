@@ -13,7 +13,7 @@ namespace KetBot.Data.Models
         [Key]
         public long Id { get; set; }
 
-        [Index(IsUnique = true)]
+        [Index]
         [Required]
         public int Order { get; set; }
 

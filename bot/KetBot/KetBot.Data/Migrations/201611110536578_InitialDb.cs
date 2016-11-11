@@ -18,7 +18,7 @@ namespace KetBot.Data.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.ExecutiveQuestions", t => t.QuestionId, cascadeDelete: true)
-                .Index(t => t.Order, unique: true)
+                .Index(t => t.Order)
                 .Index(t => t.QuestionId);
             
             CreateTable(

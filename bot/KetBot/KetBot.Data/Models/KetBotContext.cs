@@ -23,7 +23,7 @@ namespace KetBot.Data.Models
 
         public DbSet<Comment> Comments { get; set; }
 
-        public DbSet<SelectiveForm> SelectiveForm { get; set; }
+        public DbSet<SelectiveForm> SelectiveForms { get; set; }
 
         public static KetBotContext Create()
         {
@@ -34,7 +34,6 @@ namespace KetBot.Data.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<ExecutiveQuestion>().ToTable("ExecutiveQuestions");
             modelBuilder.Entity<ExecutiveQuestion>().Property(t => t.Code).IsRequired();
 
             modelBuilder.Entity<Answer>().ToTable("Answers");

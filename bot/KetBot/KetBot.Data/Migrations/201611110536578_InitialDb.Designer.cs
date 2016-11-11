@@ -13,7 +13,7 @@ namespace KetBot.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201611110321419_InitialDb"; }
+            get { return "201611110536578_InitialDb"; }
         }
         
         string IMigrationMetadata.Source
