@@ -53,13 +53,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201611110321419_InitialDb.cs" />
+    <Compile Include="Migrations\201611110321419_InitialDb.Designer.cs">
+      <DependentUpon>201611110321419_InitialDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Answer.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\CommentDefinition.cs" />
+    <Compile Include="Models\ExecutiveQuestion.cs" />
     <Compile Include="Models\KetBotContext.cs" />
+    <Compile Include="Models\SelectiveForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611110321419_InitialDb.resx">
+      <DependentUpon>201611110321419_InitialDb.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
