@@ -321,6 +321,56 @@ namespace KetBot.Data.Migrations
             );
 
             //// -----------------------------------------------------------
+
+            context.CommentDefinitions.AddOrUpdate(p => p.Code,
+                new CommentDefinition
+                {
+                    Catetory = "Greetings",
+                    Code = "RGB01",
+                    Definition = "기본 인삿말",
+                    Owner = "Bot",
+                    Comments = new System.Collections.Generic.List<Comment>()
+                    {
+                        new Comment
+                        {
+                            Text = "안녕하세요! :]"
+                        },
+                        new Comment
+                        {
+                            Text = "오! 부르셨나요, 회원님?"
+                        },
+                        new Comment
+                        {
+                            Text = "저를 찾으셨다고 들었어요."
+                        }
+                    }
+                }
+                //,
+                //new CommentDefinition
+                //{
+                //    Catetory = "",
+                //    Code = "",
+                //    Definition = "",
+                //    Owner = "",
+                //    Comments = new System.Collections.Generic.List<Comment>()
+                //    {
+                //        new Comment
+                //        {
+                //            Text = ""
+                //        },
+                //        new Comment
+                //        {
+                //            Text = ""
+                //        },
+                //        new Comment
+                //        {
+                //            Text = ""
+                //        }
+                //    }
+                //}
+            );
+
+            //// -----------------------------------------------------------
         }
     }
 }
