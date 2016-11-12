@@ -43,6 +43,15 @@ namespace KetBot.Data.Services
             List<string> options = msg.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();  
             return options;
         }
+
+        public async Task<List<string>> GetAnswerAsync(string code)
+        {
+            var answers = await this.DbContext.ExecutiveQuestions.Include(x => x.Answers)
+                .Where(x => x.Code == code)
+                .Select(x => x.Answers).FirstOrDefaultAsync();
+            return answers.Select(x => x.Text).ToList();
+        }
+
         public void Dispose()
         {
             this.DbContext.Dispose();

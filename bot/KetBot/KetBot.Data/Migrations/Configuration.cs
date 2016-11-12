@@ -262,118 +262,6 @@ namespace KetBot.Data.Migrations
 
             // -----------------------------------------------------------
 
-            //context.ExecutiveQuestions.AddOrUpdate(p => p.Code,
-            //    new ExecutiveQuestion
-            //    {
-            //        Code = "111",
-            //        Keyword = "포인트 전환",
-            //        Question = "전환버튼 클릭 후 반응이 없어요.",
-            //        Answers = new System.Collections.Generic.List<Answer>()
-            //        {
-            //             new Answer
-            //            {
-            //                Order = 10,
-            //                QuestionId = 1,
-            //                Text = "질문하신 내용은 최신 앱 버전에서 패치가 적용되었습니다. 다음 방법대로 시도해보세요. :]"
-            //            },
-            //            new Answer
-            //            {
-            //                Order = 20,
-            //                QuestionId = 1,
-            //                Text = "1. 기존에 설치된 앱 삭제\n 2. 구글 플레이 스토어에서 최신 버전으로 재설치"
-            //            },
-            //            new Answer
-            //            {
-            //                Order = 30,
-            //                QuestionId = 1,
-            //                Text = "이후에도 동일한 문제가 발생한다면, 매니저에게 물어봐주세요!!"
-            //            }
-            //        }
-            //    },
-            //    new ExecutiveQuestion
-            //    {
-            //        Code = "112",
-            //        Keyword = "본인인증",
-            //        Question = "본인인증 과정에서 오류가 있어요.",
-            //        Answers = new System.Collections.Generic.List<Answer>()
-            //        {
-            //             new Answer
-            //            {
-            //                Order = 10,
-            //                QuestionId = 1,
-            //                Text = "질문하신 내용은 최신 앱 버전에서 패치가 적용되었습니다. 다음 방법대로 시도해보세요. :]"
-            //            },
-            //            new Answer
-            //            {
-            //                Order = 20,
-            //                QuestionId = 1,
-            //                Text = "1. 기존에 설치된 앱 삭제 2. 구글 플레이 스토어에서 최신 버전으로 재설치"
-            //            },
-            //            new Answer
-            //            {
-            //                Order = 30,
-            //                QuestionId = 1,
-            //                Text = "이후에도 동일한 문제가 발생한다면, 매니저에게 물어봐주세요!!"
-            //            }
-            //        }
-            //    }
-
-            //);
-
-            ////// -----------------------------------------------------------
-
-            //context.CommentDefinitions.AddOrUpdate(p => p.Code,
-            //    new CommentDefinition
-            //    {
-            //        Catetory = "Greetings",
-            //        Code = "RGB01",
-            //        Definition = "기본 인삿말",
-            //        Owner = "Bot",
-            //        Comments = new System.Collections.Generic.List<Comment>()
-            //        {
-            //            new Comment
-            //            {
-            //                Text = "안녕하세요! :]"
-            //            },
-            //            new Comment
-            //            {
-            //                Text = "오! 부르셨나요, 회원님?"
-            //            },
-            //            new Comment
-            //            {
-            //                Text = "저를 찾으셨다고 들었어요."
-            //            }
-            //        }
-            //    }
-            //    //,
-            //    //new CommentDefinition
-            //    //{
-            //    //    Catetory = "",
-            //    //    Code = "",
-            //    //    Definition = "",
-            //    //    Owner = "",
-            //    //    Comments = new System.Collections.Generic.List<Comment>()
-            //    //    {
-            //    //        new Comment
-            //    //        {
-            //    //            Text = ""
-            //    //        },
-            //    //        new Comment
-            //    //        {
-            //    //            Text = ""
-            //    //        },
-            //    //        new Comment
-            //    //        {
-            //    //            Text = ""
-            //    //        }
-            //    //    }
-            //    //}
-            //);
-
-            //// -----------------------------------------------------------
-
-            // -----------------------------------------------------------
-
             context.ExecutiveQuestions.AddOrUpdate(p => p.Code,
                 new ExecutiveQuestion
                 {
@@ -385,7 +273,7 @@ namespace KetBot.Data.Migrations
                          new Answer
                         {
                             Order = 10,
-                            Text = "질문하신 내용은 최신 앱 버전에서 패치가 적용되었습니다. 다음 방법대로 시도해보세요. :]"
+                            Text = "질문하신 내용은 최신 앱 버전에서 패치가 적용되었습니다. 다음 방법대로 시도해보세요. :)"
                         },
                         new Answer
                         {
@@ -409,7 +297,7 @@ namespace KetBot.Data.Migrations
                          new Answer
                         {
                             Order = 10,
-                            Text = "질문하신 내용은 최신 앱 버전에서 패치가 적용되었습니다. 다음 방법대로 시도해보세요. :]"
+                            Text = "질문하신 내용은 최신 앱 버전에서 패치가 적용되었습니다. 다음 방법대로 시도해보세요. :)"
                         },
                         new Answer
                         {
@@ -433,7 +321,7 @@ namespace KetBot.Data.Migrations
                          new Answer
                         {
                             Order = 10,
-                            Text = "질문하신 내용은 최신 앱 버전에서 패치가 적용되었습니다. 다음 방법대로 시도해보세요. :]"
+                            Text = "질문하신 내용은 최신 앱 버전에서 패치가 적용되었습니다. 다음 방법대로 시도해보세요. :)"
                         },
                         new Answer
                         {
@@ -806,7 +694,7 @@ namespace KetBot.Data.Migrations
                         new Answer
                         {
                             Order = 20,
-                            Text = "우선, 매니저님에게 상품 취소를 문의해주세요. :]"
+                            Text = "우선, 매니저님에게 상품 취소를 문의해주세요. :)"
                         }
                     }
                 },
@@ -926,7 +814,7 @@ namespace KetBot.Data.Migrations
                         new Answer
                         {
                             Order = 30,
-                            Text = "참, 제휴사측에 연장처리를 요청하기 위해 매니저님께 유효기간이 지난 상품권 번호를 잊지 말고 보내주세요. :]"
+                            Text = "참, 제휴사측에 연장처리를 요청하기 위해 매니저님께 유효기간이 지난 상품권 번호를 잊지 말고 보내주세요. :)"
                         }
                     }
                 },
@@ -945,7 +833,7 @@ namespace KetBot.Data.Migrations
                         new Answer
                         {
                             Order = 20,
-                            Text = "잔액 확인은 상품권 사용이 가능한 어느 매장에서든 상품권 번호를 말씀하시면 확인이 가능하답니다. :]"
+                            Text = "잔액 확인은 상품권 사용이 가능한 어느 매장에서든 상품권 번호를 말씀하시면 확인이 가능하답니다. :)"
                         }
                     }
                 },
@@ -1222,7 +1110,7 @@ namespace KetBot.Data.Migrations
                         new Answer
                         {
                             Order = 30,
-                            Text = "잠금화면을 통해서 컨텐츠도 읽고 추가 포인트도 적립받을 수 있으니 한 번 더 생각해주세요! :]"
+                            Text = "잠금화면을 통해서 컨텐츠도 읽고 추가 포인트도 적립받을 수 있으니 한 번 더 생각해주세요! :)"
                         }
                     }
                 },
@@ -1265,7 +1153,7 @@ namespace KetBot.Data.Migrations
                         new Answer
                         {
                             Order = 30,
-                            Text = "위의 링크를 누르시면 페이스북의 핀켓 페이지에서 유용한 정보와 사용법을 한 번에 보실 수 있어요. :]"
+                            Text = "위의 링크를 누르시면 페이스북의 핀켓 페이지에서 유용한 정보와 사용법을 한 번에 보실 수 있어요. :)"
                         }
                     }
                 },
@@ -1303,7 +1191,7 @@ namespace KetBot.Data.Migrations
                     {
                         new Comment
                         {
-                            Text = "안녕하세요! :]"
+                            Text = "안녕하세요! :)"
                         },
                         new Comment
                         {
@@ -1527,7 +1415,7 @@ namespace KetBot.Data.Migrations
                         },
                         new Comment
                         {
-                            Text = "다행이네요. 더 남기실 이야기 있으신 경우 언제든!! 저 말고 매니저님에게 말씀해주세요! :]"
+                            Text = "다행이네요. 더 남기실 이야기 있으신 경우 언제든!! 저 말고 매니저님에게 말씀해주세요! :)"
                         },
                         new Comment
                         {

@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
-using Microsoft.Bot.Connector;
-using KetBot.Models;
 using KetBot.Data.Services;
 using KetBot.Data.Models;
+using Microsoft.Bot.Connector;
+using KetBot.Models;
 
 namespace KetBot.Dialogs
 {
     [Serializable]
-    public class Stage1Dialog : IDialog<string>
+    public class Stage3Dialog : IDialog<string>
     {
         public async Task StartAsync(IDialogContext context)
         {
@@ -25,46 +25,48 @@ namespace KetBot.Dialogs
             {
                 var activity = await argument;
 
-                // Check here the right value of the Stage 0
-                var cat1 = await service.GetFormsAsync("0");
+                // get state 
+                KetBotState state = null;
+                context.ConversationData.TryGetValue("KetBotState", out state);
+
+                var cat3 = await service.GetFormsAsync(state.Stage1Selection);
 
                 bool checkflag = false;
                 int selected;
-                if (int.TryParse(activity.Text, out selected) && selected > 0 && selected <= cat1.Count)
+                if (int.TryParse(activity.Text, out selected) && selected > 0 && selected <= cat3.Count)
                 {
                     checkflag = true;
                 }
 
                 if (checkflag == true)
                 {
-                    // The result of stage 0
-                    // Get Current State.
-                    KetBotState state = null;
-                    context.ConversationData.TryGetValue("KetBotState", out state);
-
-                    // save Stage0 selection
-                    state.Stage0Selection = activity.Text;
-
+                    // save Stage1 selection
+                    state.Stage2Selection = activity.Text;
                     // save state
                     context.ConversationData.SetValue("KetBotState", state);
 
-                    // stage 1 question
-                    var cat2 = await service.GetCommentAsync("RCB01");
-                    var q = string.Format(cat2, cat1[selected - 1]);
+                    // final answers 
+                    var answers = await service.GetAnswerAsync(state.Stage0Selection + state.Stage1Selection + state.Stage2Selection);
+                    await context.PostAsync(string.Join("\n", answers.ToArray()));
 
+                    var q = await service.GetCommentAsync("RCB02");
                     List<string> yesno = new List<string>() { "네, 맞아요!", "아닌데요?" };
 
                     PromptDialog.Choice(context, AfterChoiceAsync, yesno, q, promptStyle: PromptStyle.Keyboard);
+
+
                 }
                 else
                 {
                     // Go back to stage 0
-                    // How to go back?
+                    // TODO : How to go back?
+                    //context.Reset();
                     await context.PostAsync(await service.GetCommentAsync("REB01"));
-                    context.Call(new Stage0Dialog(), async (c, r) => { var s = await r; context.Done(""); });
+                    context.Call(new Stage2Dialog(), async (c, r) => { var s = await r; context.Done(""); });
                 }
             }
         }
+
         private async Task AfterChoiceAsync(IDialogContext context, IAwaitable<string> result)
         {
             var selection = await result;
@@ -73,23 +75,17 @@ namespace KetBot.Dialogs
             {
                 using (CommentService service = new CommentService(new KetBotContext()))
                 {
-                    await context.PostAsync(await service.GetCommentAsync("RPB02"));
-                    // get state
-                    KetBotState state = null;
-                    // category 2 question
-                    context.ConversationData.TryGetValue("KetBotState", out state);
-                    // category 2 list
-                    var cat2 = await service.GetFormsAsync(state.Stage0Selection);
-                    await context.PostAsync(string.Join("\n", cat2.ToArray()));
+                    // good bye RBB01
+                    var bye = await service.GetCommentAsync("RBB01");
 
                     // go next
-                    context.Done("");
+                    context.Done(bye);
                 }
             }
             else if (selection == "아닌데요?")
             {
                 // go back
-                context.Call(new Stage0Dialog(), async (c, r) => { var s = await r; context.Done(""); });
+                context.Call(new Stage2Dialog(), async (c, r) => { var s = await r; context.Done(""); });
             }
         }
     }

@@ -38,7 +38,11 @@ namespace KetBot.Dialogs
                                     return Chain.ContinueWith(new Stage2Dialog(), async (c2, r2) =>
                                     {
                                         var s2result = await r2;
-                                        return Chain.Return("계속 가고 싶음");
+                                        return Chain.ContinueWith(new Stage3Dialog(), async (c3, r3) =>
+                                        {
+                                            var s3resutl = await r3;
+                                            return Chain.Return(s3resutl); // good bye
+                                        });
                                     });
                                 });
                             });

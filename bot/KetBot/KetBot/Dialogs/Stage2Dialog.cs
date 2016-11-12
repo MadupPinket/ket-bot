@@ -46,6 +46,7 @@ namespace KetBot.Dialogs
 
                     // stage 2 question
                     var q = await service.GetCommentAsync("RCB01");
+                    q = string.Format(q, cat2[selected - 1]);
                     var cat3 = await service.GetFormsAsync(state.Stage0Selection + state.Stage1Selection);
                     await context.PostAsync(q);
                     await context.PostAsync(string.Join("\n", cat3.ToArray()));
@@ -57,7 +58,7 @@ namespace KetBot.Dialogs
                 {
                     // Go back to stage 0
                     // TODO : How to go back?
-                    context.Reset();
+                    context.Call(new Stage1Dialog(), async (c, r) => { var s = await r; context.Done(""); });
                 }
             }
         }
