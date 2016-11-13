@@ -58,11 +58,10 @@ namespace KetBot.Dialogs
                 }
                 else
                 {
-                    // Go back to stage 0
-                    // TODO : How to go back?
-                    //context.Reset();
+                    // Go back to stage 2
                     await context.PostAsync(await service.GetCommentAsync("REB01"));
-                    context.Call(new Stage2Dialog(), async (c, r) => { var s = await r; context.Done(""); });
+                    await context.PostAsync(string.Join("\n", cat3.ToArray()));
+                    context.Wait(MessageReceivedAsync);
                 }
             }
         }
@@ -85,8 +84,17 @@ namespace KetBot.Dialogs
             else if (selection == "아닌데요?")
             {
                 // go back
-                context.Call(new Stage2Dialog(), async (c, r) => { var s = await r; context.Done(""); });
+                //context.Call(new Stage0Dialog(), null);
+                await context.PostAsync("처음으로 갈께요.");
             }
         }
+
+        //private async Task AfterGoBackAsync(IDialogContext context, IAwaitable<string> result)
+        //{
+
+        //    var s = await result;
+        //    context.Wait(MessageReceivedAsync);
+        //}
+
     }
 }

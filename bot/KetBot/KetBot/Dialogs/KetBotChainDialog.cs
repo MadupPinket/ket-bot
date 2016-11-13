@@ -23,7 +23,7 @@ namespace KetBot.Dialogs
             .Switch(
                 new Case<IMessageActivity, IDialog<string>>((msg) =>
                 {
-                    var regex = new Regex("^start", RegexOptions.IgnoreCase);
+                    var regex = new Regex("^처음으로", RegexOptions.IgnoreCase);
                     return regex.IsMatch(msg.Text);
                 }, (ctx, msg) =>
                 {

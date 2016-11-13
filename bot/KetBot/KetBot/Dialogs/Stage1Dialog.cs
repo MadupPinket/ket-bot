@@ -61,7 +61,8 @@ namespace KetBot.Dialogs
                     // Go back to stage 0
                     // How to go back?
                     await context.PostAsync(await service.GetCommentAsync("REB01"));
-                    context.Call(new Stage0Dialog(), async (c, r) => { var s = await r; context.Done(""); });
+                    await context.PostAsync(string.Join("\n", cat1.ToArray()));
+                    context.Wait(MessageReceivedAsync);
                 }
             }
         }
@@ -89,7 +90,12 @@ namespace KetBot.Dialogs
             else if (selection == "아닌데요?")
             {
                 // go back
-                context.Call(new Stage0Dialog(), async (c, r) => { var s = await r; context.Done(""); });
+                context.Call(new Stage0Dialog(), async (c, r) => 
+                {
+                    var s = await r;
+                    //context.Done("");
+                    context.Wait(MessageReceivedAsync);
+                });
             }
         }
     }
