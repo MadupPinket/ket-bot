@@ -138,6 +138,7 @@
     <Compile Include="Dialogs\Stage1Dialog.cs" />
     <Compile Include="Dialogs\Stage2Dialog.cs" />
     <Compile Include="Dialogs\Stage3Dialog.cs" />
+    <Compile Include="Dialogs\StageDialog.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

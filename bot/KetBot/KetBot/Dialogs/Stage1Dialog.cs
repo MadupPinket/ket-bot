@@ -81,7 +81,8 @@ namespace KetBot.Dialogs
                     context.ConversationData.TryGetValue("KetBotState", out state);
                     // category 2 list
                     var cat2 = await service.GetFormsAsync(state.Stage0Selection);
-                    await context.PostAsync(string.Join("\n", cat2.ToArray()));
+                    var cat2numbering = ListNumberingHelper.Numbering(cat2);
+                    await context.PostAsync(string.Join("\n", cat2numbering.ToArray()));
 
                     // go next
                     context.Done("");

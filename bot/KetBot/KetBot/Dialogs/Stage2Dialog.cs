@@ -48,8 +48,9 @@ namespace KetBot.Dialogs
                     var q = await service.GetCommentAsync("RCB01");
                     q = string.Format(q, cat2[selected - 1]);
                     var cat3 = await service.GetFormsAsync(state.Stage0Selection + state.Stage1Selection);
+                    var cat3numbering = ListNumberingHelper.Numbering(cat3);
                     await context.PostAsync(q);
-                    await context.PostAsync(string.Join("\n", cat3.ToArray()));
+                    await context.PostAsync(string.Join("\n", cat3numbering.ToArray()));
 
                     context.Done("");
 

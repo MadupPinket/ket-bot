@@ -23,15 +23,18 @@ namespace KetBot.Dialogs
             .Switch(
                 new Case<IMessageActivity, IDialog<string>>((msg) =>
                 {
-                    var regex = new Regex("^처음으로", RegexOptions.IgnoreCase);
+                    var regex = new Regex("^처음", RegexOptions.IgnoreCase);
                     return regex.IsMatch(msg.Text);
                 }, (ctx, msg) =>
                 {
                     // User wants to login, send the message to Facebook Auth Dialog
-                    return Chain.From(() => new Stage0Dialog())
-                            .ContinueWith<string,string>(async (context, result) =>
-                            {
-                                var s0result = await result;
+                    return Chain.From(() => new StageDialog())
+                    .ContinueWith(async (context, result) =>
+                    {
+                        var sresult = await result;
+                        return Chain.ContinueWith(new Stage0Dialog(), async (c0, r0) => 
+                        {  
+                                var s0result = await r0;
                                 return Chain.ContinueWith(new Stage1Dialog(), async (c1, r1) =>
                                 {
                                     var s1result = await r1;
@@ -46,6 +49,7 @@ namespace KetBot.Dialogs
                                     });
                                 });
                             });
+                    });
 
                 }),
                 new DefaultCase<IMessageActivity, IDialog<string>>((ctx, msg) =>

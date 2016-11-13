@@ -85,16 +85,8 @@ namespace KetBot.Dialogs
             {
                 // go back
                 //context.Call(new Stage0Dialog(), null);
-                await context.PostAsync("처음으로 갈께요.");
+                context.Done("처음부터 하시려면 '처음으로'를 입력해주세요.");
             }
         }
-
-        //private async Task AfterGoBackAsync(IDialogContext context, IAwaitable<string> result)
-        //{
-
-        //    var s = await result;
-        //    context.Wait(MessageReceivedAsync);
-        //}
-
     }
 }
