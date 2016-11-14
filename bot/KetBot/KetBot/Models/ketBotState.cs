@@ -10,17 +10,10 @@ namespace KetBot.Models
         /// <summary>
         /// 현재 스탭/상황/Depth
         /// </summary>
-        public int CurrentStage { get; set; }
-
         public string Stage0Selection { get; set; }
 
         public string Stage1Selection { get; set; }
 
         public string Stage2Selection { get; set; }
-
-        public string Stage3Selection { get; set; }
-
-        public string Stage4Selection { get; set; }
-
     }
 }
