@@ -152,6 +152,7 @@
     <Content Include="default.htm" />
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\ketbotv2 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\kevbotdev2 - Web Deploy.pubxml" />
     <None Include="Service References\TranslatorService\configuration91.svcinfo" />
     <None Include="Service References\TranslatorService\configuration.svcinfo" />
     <Content Include="Service References\TranslatorService\KetBot.TranslatorService.GetTranslationsResponse.datasource">

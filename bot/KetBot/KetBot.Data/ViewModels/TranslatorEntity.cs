@@ -11,8 +11,8 @@ namespace KetBot.Data.ViewModels
     {
         public TranslatorEntity(string channelId, string conversationId, string replyId)
         {
-            this.PartitionKey = channelId;
-            this.RowKey = conversationId + ":" + replyId;
+            this.PartitionKey = channelId + "-" + conversationId;
+            this.RowKey = replyId;
         }
 
         public TranslatorEntity() { }
