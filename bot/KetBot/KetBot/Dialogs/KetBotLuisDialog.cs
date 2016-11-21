@@ -255,29 +255,36 @@ namespace KetBot.Dialogs
         [LuisIntent("Gift Card")]
         public async Task GiftCard(IDialogContext context, LuisResult result)
         {
-            switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault().ToLower())
+            if (result.Entities == null || result.Entities.Count == 0)
             {
-                case "happy money":
-                    await GetAnswersAsync(context, "515");
-                    break;
-                case "how to use":
-                case "how do i use":
-                case "usage":
-                    await GetAnswersAsync(context, "521");
-                    break;
-                case "how to receive":
-                    await GetAnswersAsync(context, "522");
-                    break;
-                case "expired":
-                    await GetAnswersAsync(context, "523");
-                    break;
-                default:
-                    // TODO : Question Again
-                    await context.PostAsync("기프트 카드에 대해서 문의 하셨는데 답을 드리지 못하네요.");
-                    context.Wait(MessageReceived);
-                    break;
+                await context.PostAsync("기프트 카드에 대해서 문의 하셨는데 답을 드리지 못하네요.");
+                context.Wait(MessageReceived);
             }
-            
+            else
+            {
+                switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault().ToLower())
+                {
+                    case "happy money":
+                        await GetAnswersAsync(context, "515");
+                        break;
+                    case "how to use":
+                    case "how do i use":
+                    case "usage":
+                        await GetAnswersAsync(context, "521");
+                        break;
+                    case "how to receive":
+                        await GetAnswersAsync(context, "522");
+                        break;
+                    case "expired":
+                        await GetAnswersAsync(context, "523");
+                        break;
+                    default:
+                        // TODO : Question Again
+                        await context.PostAsync("기프트 카드에 대해서 문의 하셨는데 답을 드리지 못하네요.");
+                        context.Wait(MessageReceived);
+                        break;
+                }
+            }
         }
 
         [LuisIntent("Mobile Voucher")]
@@ -290,22 +297,30 @@ namespace KetBot.Dialogs
         [LuisIntent("Application Error")]
         public async Task ApplicationError(IDialogContext context, LuisResult result)
         {
-            switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault().ToLower())
+            if (result.Entities == null || result.Entities.Count == 0)
             {
-                case "screen stop":
-                    await GetAnswersAsync(context, "611");
-                    break;
-                case "toggle button":
-                    await GetAnswersAsync(context, "111");
-                    break;
-                case "lock screen":
-                    await GetAnswersAsync(context, "747");
-                    break;
-                default:
-                    // TODO : Question Again
-                    await context.PostAsync("프로그램 오류에 대해서 문의하셨는데 답을 드리지 못하네요.");
-                    context.Wait(MessageReceived);
-                    break;
+                await context.PostAsync("프로그램 오류에 대해서 문의하셨는데 답을 드리지 못하네요.");
+                context.Wait(MessageReceived);
+            }
+            else
+            {
+                switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault().ToLower())
+                {
+                    case "screen stop":
+                        await GetAnswersAsync(context, "611");
+                        break;
+                    case "toggle button":
+                        await GetAnswersAsync(context, "111");
+                        break;
+                    case "lock screen":
+                        await GetAnswersAsync(context, "747");
+                        break;
+                    default:
+                        // TODO : Question Again
+                        await context.PostAsync("프로그램 오류에 대해서 문의하셨는데 답을 드리지 못하네요.");
+                        context.Wait(MessageReceived);
+                        break;
+                }
             }
         }
 
@@ -347,31 +362,39 @@ namespace KetBot.Dialogs
         [LuisIntent("Account")]
         public async Task Account(IDialogContext context, LuisResult result)
         {
-            switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault().ToLower())
+            if (result.Entities == null || result.Entities.Count == 0)
             {
-                case "log in":
-                    await GetAnswersAsync(context, "741");
-                    break;
-                case "log out":
-                    await GetAnswersAsync(context, "742");
-                    break;
-                case "forgot password":
-                    await GetAnswersAsync(context, "743");
-                    break;
-                case "chage id":
-                    await GetAnswersAsync(context, "744");
-                    break;
-                case "change password":
-                    await GetAnswersAsync(context, "745");
-                    break;
-                case "change name":
-                    await GetAnswersAsync(context, "746");
-                    break;
-                default:
-                    // TODO : Question Again
-                    await context.PostAsync("로그인 계정에 대해서 문의 하셨는데 답을 드리지 못하네요.");
-                    context.Wait(MessageReceived);
-                    break;
+                await context.PostAsync("로그인 계정에 대해서 문의 하셨는데 답을 드리지 못하네요.");
+                context.Wait(MessageReceived);
+            }
+            else
+            {
+                switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault().ToLower())
+                {
+                    case "log in":
+                        await GetAnswersAsync(context, "741");
+                        break;
+                    case "log out":
+                        await GetAnswersAsync(context, "742");
+                        break;
+                    case "forgot password":
+                        await GetAnswersAsync(context, "743");
+                        break;
+                    case "chage id":
+                        await GetAnswersAsync(context, "744");
+                        break;
+                    case "change password":
+                        await GetAnswersAsync(context, "745");
+                        break;
+                    case "change name":
+                        await GetAnswersAsync(context, "746");
+                        break;
+                    default:
+                        // TODO : Question Again
+                        await context.PostAsync("로그인 계정에 대해서 문의 하셨는데 답을 드리지 못하네요.");
+                        context.Wait(MessageReceived);
+                        break;
+                }
             }
         }
 
