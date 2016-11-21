@@ -20,7 +20,7 @@ namespace KetBot.Dialogs
             context.ConversationData.TryGetValue("KetBotState", out state);
 
             // if null, 
-            if (state == null || state.CurrentStage != 0)
+            if (state == null)
             {
                 state = new KetBotState();
                 context.ConversationData.SetValue("KetBotState", state);
