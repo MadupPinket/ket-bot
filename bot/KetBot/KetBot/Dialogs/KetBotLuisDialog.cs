@@ -108,15 +108,15 @@ namespace KetBot.Dialogs
             }
             else
             {
-                switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault())
+                switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault().ToLower())
                 {
-                    case "Error":
+                    case "error":
                         await GetAnswersAsync(context, "114");
                         break;
                     case "accidentally integration":
                         await GetAnswersAsync(context, "121");
                         break;
-                    case "Cancel":
+                    case "cancel":
                         await GetAnswersAsync(context, "122");
                         break;
                     case "credit card":
@@ -126,6 +126,7 @@ namespace KetBot.Dialogs
                         await GetAnswersAsync(context, "132");
                         break;
                     case "opt out":
+                    case "out":
                         await GetAnswersAsync(context, "141");
                         break;
                     case "how to use":
@@ -138,9 +139,10 @@ namespace KetBot.Dialogs
                         await GetAnswersAsync(context, "311");
                         break;
                     case "too small":
+                    case "small":
                         await GetAnswersAsync(context, "321");
                         break;
-                    case "Lock Screen":
+                    case "lock screen":
                         await GetAnswersAsync(context, "748");
                         break;
                     default:
@@ -253,18 +255,18 @@ namespace KetBot.Dialogs
         [LuisIntent("Gift Card")]
         public async Task GiftCard(IDialogContext context, LuisResult result)
         {
-            switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault())
+            switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault().ToLower())
             {
-                case "Happy money":
+                case "happy money":
                     await GetAnswersAsync(context, "515");
                     break;
-                case "How to use":
+                case "how to use":
                     await GetAnswersAsync(context, "521");
                     break;
-                case "How to receive":
+                case "how to receive":
                     await GetAnswersAsync(context, "522");
                     break;
-                case "Expired":
+                case "expired":
                     await GetAnswersAsync(context, "523");
                     break;
                 default:
@@ -285,15 +287,15 @@ namespace KetBot.Dialogs
         [LuisIntent("Application Error")]
         public async Task ApplicationError(IDialogContext context, LuisResult result)
         {
-            switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault())
+            switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault().ToLower())
             {
-                case "Screen Stop":
+                case "screen stop":
                     await GetAnswersAsync(context, "611");
                     break;
                 case "toggle button":
                     await GetAnswersAsync(context, "111");
                     break;
-                case "Lock Screen":
+                case "lock screen":
                     await GetAnswersAsync(context, "747");
                     break;
                 default:
@@ -342,24 +344,24 @@ namespace KetBot.Dialogs
         [LuisIntent("Account")]
         public async Task Account(IDialogContext context, LuisResult result)
         {
-            switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault())
+            switch (result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault().ToLower())
             {
-                case "Log in":
+                case "log in":
                     await GetAnswersAsync(context, "741");
                     break;
-                case "Log out":
+                case "log out":
                     await GetAnswersAsync(context, "742");
                     break;
-                case "Forgot Password":
+                case "forgot password":
                     await GetAnswersAsync(context, "743");
                     break;
-                case "Chage ID":
+                case "chage id":
                     await GetAnswersAsync(context, "744");
                     break;
-                case "Change Password":
+                case "change password":
                     await GetAnswersAsync(context, "745");
                     break;
-                case "Change Name":
+                case "change name":
                     await GetAnswersAsync(context, "746");
                     break;
                 default:
