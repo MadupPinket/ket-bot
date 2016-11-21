@@ -7,6 +7,8 @@ using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -23,12 +25,59 @@ namespace KetBot.Dialogs
             context.Wait(MessageReceived);
         }
 
-        //protected override async Task MessageReceived(IDialogContext context, IAwaitable<IMessageActivity> item)
-        //{
-        //    // TODO: Tranlator Text API 
+        protected override async Task MessageReceived(IDialogContext context, IAwaitable<IMessageActivity> item)
+        {
+            var activity = await item;
+            // Tranlator Text API 
+            var token = string.Empty;
+            try
+            {
+                token = await AzureAuthToken.DefaultInstance.GetAccessTokenAsync();
+            }
+            catch (HttpRequestException)
+            {
+                switch (AzureAuthToken.DefaultInstance.RequestStatusCode)
+                {
+                    case HttpStatusCode.Unauthorized:
+                        Console.WriteLine("Request to token service is not authorized (401). Check that the Azure subscription key is valid.");
+                        break;
+                    case HttpStatusCode.Forbidden:
+                        Console.WriteLine("Request to token service is not authorized (403). For accounts in the free-tier, check that the account quota is not exceeded.");
+                        break;
+                }
+                throw;
+            }
+            
+            var translatorService = new TranslatorService.LanguageServiceClient();
+            var originMessage = activity.Text;
+            var translatedMessage = translatorService.Translate(token, originMessage, "ko", "en", "text/plain", "general", string.Empty);
+            activity.Text = translatedMessage;
 
-        //    base.MessageReceived(context, item);
-        //}
+            if (this.handlerByIntent == null)
+            {
+                this.handlerByIntent = new Dictionary<string, IntentActivityHandler>(GetHandlersByIntent());
+            }
+
+            var messageText = await GetLuisQueryTextAsync(context, activity);
+            var tasks = this.services.Select(s => s.QueryAsync(messageText, context.CancellationToken)).ToArray();
+            var winner = this.BestResultFrom(await Task.WhenAll(tasks));
+
+            IntentActivityHandler handler = null;
+            if (winner == null || !this.handlerByIntent.TryGetValue(winner.BestIntent.Intent, out handler))
+            {
+                handler = this.handlerByIntent[string.Empty];
+            }
+
+            if (handler != null)
+            {
+                await handler(context, item, winner?.Result);
+            }
+            else
+            {
+                var text = $"No default intent handler found.";
+                throw new Exception(text);
+            }
+        }
 
         [LuisIntent("Point")]
         public async Task Point(IDialogContext context, LuisResult result)

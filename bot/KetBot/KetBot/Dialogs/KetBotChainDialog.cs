@@ -53,8 +53,6 @@ namespace KetBot.Dialogs
                 }),
                 new DefaultCase<IMessageActivity, IDialog<string>>((ctx, msg) =>
                 {
-                    // TODO: Translate here and set the text property
-                    // TODO: Log to Table. 
                     return Chain.From(() => new KetBotLuisDialog());
                 }
             ))
