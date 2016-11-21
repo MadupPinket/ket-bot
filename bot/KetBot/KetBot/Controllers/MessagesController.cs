@@ -25,9 +25,7 @@ namespace KetBot
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                // await Conversation.SendAsync(activity, () => new KetBotDialog());
                 await Conversation.SendAsync(activity, () => KetBotChainDialog.dialog);
-                //await Conversation.SendAsync(activity, () => new Stage0Dialog());
             }
             else
             {

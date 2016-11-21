@@ -134,6 +134,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\KetBotChainDialog.cs" />
+    <Compile Include="Dialogs\KetBotLuisDialog.cs" />
+    <Compile Include="Dialogs\QuestionListPromptDialog.cs" />
     <Compile Include="Dialogs\Stage0Dialog.cs" />
     <Compile Include="Dialogs\Stage1Dialog.cs" />
     <Compile Include="Dialogs\Stage2Dialog.cs" />
@@ -164,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Tranlator\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

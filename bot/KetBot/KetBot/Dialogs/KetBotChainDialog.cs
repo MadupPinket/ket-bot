@@ -19,7 +19,6 @@ namespace KetBot.Dialogs
     {
         public static readonly IDialog<string> dialog = Chain
             .PostToChain()
-            //.Select(p => p.Text)
             .Switch(
                 new Case<IMessageActivity, IDialog<string>>((msg) =>
                 {
@@ -54,7 +53,9 @@ namespace KetBot.Dialogs
                 }),
                 new DefaultCase<IMessageActivity, IDialog<string>>((ctx, msg) =>
                 {
-                    return Chain.Return("어떤 말씀이신지?");
+                    // TODO: Translate here and set the text property
+                    // TODO: Log to Table. 
+                    return Chain.From(() => new KetBotLuisDialog());
                 }
             ))
             .Unwrap()

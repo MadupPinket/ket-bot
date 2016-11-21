@@ -63,6 +63,7 @@
     <Compile Include="Models\CommentDefinition.cs" />
     <Compile Include="Models\ExecutiveQuestion.cs" />
     <Compile Include="Models\KetBotContext.cs" />
+    <Compile Include="ViewModels\QuestionCode.cs" />
     <Compile Include="Models\SelectiveForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CommentService.cs" />

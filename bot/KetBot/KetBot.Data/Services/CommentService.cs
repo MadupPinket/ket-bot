@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using KetBot.ViewModels;
 
 namespace KetBot.Data.Services
 {
@@ -49,7 +50,20 @@ namespace KetBot.Data.Services
             var answers = await this.DbContext.ExecutiveQuestions.Include(x => x.Answers)
                 .Where(x => x.Code == code)
                 .Select(x => x.Answers).FirstOrDefaultAsync();
-            return answers.Select(x => x.Text).ToList();
+            return answers.OrderBy(x => x.Order).Select(x => x.Text).ToList();
+        }
+
+        public async Task<List<QuestionCode>> GetQuestionsByCode(List<string> codes)
+        {
+            var questions =  await this.DbContext.ExecutiveQuestions
+                .Where(x => codes.Contains(x.Code)).Select(x => new QuestionCode { Code = x.Code, Id = x.Id, Question = x.Question }).ToListAsync();
+
+            for(int i = 1; i<= questions.Count; i++)
+            {
+                questions[i - 1].Number = i;
+            }
+
+            return questions;
         }
 
         public void Dispose()
