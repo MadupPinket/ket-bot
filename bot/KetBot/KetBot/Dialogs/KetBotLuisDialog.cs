@@ -1,5 +1,6 @@
 ﻿using KetBot.Data.Models;
 using KetBot.Data.Services;
+using KetBot.Data.ViewModels;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis;
 using Microsoft.Bot.Builder.Luis.Models;
@@ -32,6 +33,7 @@ namespace KetBot.Dialogs
             var token = string.Empty;
             try
             {
+                // Auzre Token
                 token = await AzureAuthToken.DefaultInstance.GetAccessTokenAsync();
             }
             catch (HttpRequestException)
@@ -49,7 +51,9 @@ namespace KetBot.Dialogs
             }
             
             var translatorService = new TranslatorService.LanguageServiceClient();
+            // original text
             var originMessage = activity.Text;
+            // Translate text
             var translatedMessage = translatorService.Translate(token, originMessage, "ko", "en", "text/plain", "general", string.Empty);
             activity.Text = translatedMessage;
 
@@ -60,7 +64,22 @@ namespace KetBot.Dialogs
 
             var messageText = await GetLuisQueryTextAsync(context, activity);
             var tasks = this.services.Select(s => s.QueryAsync(messageText, context.CancellationToken)).ToArray();
+            // Intent and entity 
             var winner = this.BestResultFrom(await Task.WhenAll(tasks));
+
+            if (winner != null)
+            {
+                // Log to Table
+                AzureTableService<TranslatorEntity> service = new AzureTableService<TranslatorEntity>();
+                await service.CreateTableAsync("translatorlog");
+                await service.AddMessageAsync("translatorlog", new TranslatorEntity(activity.ChannelId, activity.Conversation.Id, activity.Id)
+                {
+                    OriginText = originMessage,
+                    TranlateText = translatedMessage,
+                    Intent = winner.BestIntent.Intent,
+                    Entity = winner.Result.Entities.OrderByDescending(x => x.Score).Select(x => x.Entity).FirstOrDefault()
+                });
+            }
 
             IntentActivityHandler handler = null;
             if (winner == null || !this.handlerByIntent.TryGetValue(winner.BestIntent.Intent, out handler))
@@ -70,6 +89,7 @@ namespace KetBot.Dialogs
 
             if (handler != null)
             {
+                
                 await handler(context, item, winner?.Result);
             }
             else
@@ -249,7 +269,7 @@ namespace KetBot.Dialogs
                     break;
                 default:
                     // TODO : Question Again
-
+                    await context.PostAsync("기프트 카드에 대해서 문의 하셨는데 답을 드리지 못하네요.");
                     break;
             }
             context.Wait(MessageReceived);
@@ -278,7 +298,7 @@ namespace KetBot.Dialogs
                     break;
                 default:
                     // TODO : Question Again
-
+                    await context.PostAsync("프로그램 오류에 대해서 문의하셨는데 답을 드리지 못하네요.");
                     break;
             }
             context.Wait(MessageReceived);
@@ -344,7 +364,7 @@ namespace KetBot.Dialogs
                     break;
                 default:
                     // TODO : Question Again
-
+                    await context.PostAsync("로그인 계정에 대해서 문의 하셨는데 답을 드리지 못하네요.");
                     break;
             }
             context.Wait(MessageReceived);
