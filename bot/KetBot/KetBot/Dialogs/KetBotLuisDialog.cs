@@ -261,6 +261,8 @@ namespace KetBot.Dialogs
                     await GetAnswersAsync(context, "515");
                     break;
                 case "how to use":
+                case "how do i use":
+                case "usage":
                     await GetAnswersAsync(context, "521");
                     break;
                 case "how to receive":
@@ -272,9 +274,10 @@ namespace KetBot.Dialogs
                 default:
                     // TODO : Question Again
                     await context.PostAsync("기프트 카드에 대해서 문의 하셨는데 답을 드리지 못하네요.");
+                    context.Wait(MessageReceived);
                     break;
             }
-            context.Wait(MessageReceived);
+            
         }
 
         [LuisIntent("Mobile Voucher")]
@@ -301,9 +304,9 @@ namespace KetBot.Dialogs
                 default:
                     // TODO : Question Again
                     await context.PostAsync("프로그램 오류에 대해서 문의하셨는데 답을 드리지 못하네요.");
+                    context.Wait(MessageReceived);
                     break;
             }
-            context.Wait(MessageReceived);
         }
 
         //[LuisIntent("Suggestion")]
@@ -367,9 +370,9 @@ namespace KetBot.Dialogs
                 default:
                     // TODO : Question Again
                     await context.PostAsync("로그인 계정에 대해서 문의 하셨는데 답을 드리지 못하네요.");
+                    context.Wait(MessageReceived);
                     break;
             }
-            context.Wait(MessageReceived);
         }
 
         //[LuisIntent("How to use")]
