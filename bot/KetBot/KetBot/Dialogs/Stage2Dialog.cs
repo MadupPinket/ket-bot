@@ -39,12 +39,12 @@ namespace KetBot.Dialogs
 
                 if (checkflag == true)
                 {
-                    // save Stage1 selection
+                    // save Stage 2 selection
                     state.Stage1Selection = activity.Text;
                     // save state
                     context.ConversationData.SetValue("KetBotState", state);
 
-                    // stage 2 question
+                    // stage 3 question
                     var q = await service.GetCommentAsync("RCB01");
                     q = string.Format(q, cat2[selected - 1]);
                     var cat3 = await service.GetFormsAsync(state.Stage0Selection + state.Stage1Selection);

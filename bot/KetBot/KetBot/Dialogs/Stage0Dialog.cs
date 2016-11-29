@@ -16,7 +16,7 @@ namespace KetBot.Dialogs
     {
         public async Task StartAsync(IDialogContext context)
         {
-            // Greeting and First selection
+            // First Question and selection
             using (CommentService service = new CommentService(new KetBotContext()))
             {
                 // Question

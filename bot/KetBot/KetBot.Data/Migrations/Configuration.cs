@@ -10,7 +10,7 @@ namespace KetBot.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(KetBot.Data.Models.KetBotContext context)
