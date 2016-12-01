@@ -1,4 +1,4 @@
-English version
+English version is here.
 
 핀켓 CS ChatBot
 ==================
@@ -8,28 +8,18 @@ English version
 [Microsoft Bot Framework](https://dev.botframework.com/)는 Bot을 만들기 위해 마이크로소프트가 운영하는 서비스와 SDK입니다. Bot Connector라는 서비스를 중심으로 Skype, Facebook Messenger등의 채널을 우리가 만들 Bot에 연결시켜 줍니다. Node.js 와 C# 을 지원하는 Bot Builder SDK를 사용하면 빠르게 Bot을 만들 수 있습니다. 본 과제에서는 C#을 사용했습니다. 
 
 ## 개발 환경
-<table border="1">
-    <tr>
-        <td width="50%">
-        
-Bot
 
+### Bot
 - Windows 10 / Visual Studio 2015
 - C# 
 - Entity Framework
 - [Bot Framework Template](http://aka.ms/bf-bc-vstemplate) 
 - [Bot Framework Emulator](https://aka.ms/bf-bc-emulator)
-        </td>
-        <td width="50%">
 
-App
-
+### App
 - Windows 10 / Eclipse 
 - Java 
 - Android SDK
-        </td>
-    </tr>
-</table>
 
 ## 유용한 문서
 
@@ -38,7 +28,7 @@ App
 - [Direct Line REST API 1.1](https://docs.botframework.com/en-us/restapi/directline/#navtitle)
 
 
- ## 아키텍쳐 다이어 그램 
+## 아키텍쳐 다이어 그램 
 
  ![FINKET CS Bot Diagram](/docs/images/madup bot diagram.jpg)
 
@@ -47,7 +37,7 @@ App
 - Bot은 적절한 질문과 대답을 데이터베이스에서 조회해서 사용자에게 전달합니다. 
 - Bot은 Azure Web App 에 배포해서 운영하고 데이터 베이스는 Azure SQL Database를 사용합니다. 
 
- ## 배포환경 
+## 배포환경 
 
  1. Azure Web App : Bot 배포 
  1. Azure SQL Database : 질문 답변이 담겨있는 데이터베이스 
