@@ -3,7 +3,7 @@ English version is here.
 핀켓 CS ChatBot
 ==================
 
-<p><a href="https://youtu.be/iUrwiaHB7p4" target="_blank"><img src="/MadupPinket/ket-bot/raw/master/docs/images/FINKET%20DEmo.jpg" alt="FINKET Demo" style="max-width:100%;"></a></p>
+<p><a href="https://youtu.be/iUrwiaHB7p4" target="_blank"><img src="https://raw.githubusercontent.com/MadupPinket/ket-bot/master/docs/images/FINKET%20DEmo.jpg" alt="FINKET Demo" style="max-width:100%;"></a></p>
 
 
 [매드업](http://madup.com)과 마이크로소프트가 함께 HackFest를 통해서 [핀켓 앱](http://finket.co.kr/)의 CS(Customer Satisfaction) 기능을 강화하기 위해 ChatBot을 만들었습니다. 자세한 소개는 "핀켓 CS Chatbot 만들기"문서를 참조 바랍니다. 
