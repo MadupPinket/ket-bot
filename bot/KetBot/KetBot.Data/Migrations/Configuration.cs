@@ -13,6 +13,10 @@ namespace KetBot.Data.Migrations
             AutomaticMigrationsEnabled = true;
         }
 
+        /// <summary>
+        /// Seed data. Questions and Answers
+        /// </summary>
+        /// <param name="context"></param>
         protected override void Seed(KetBot.Data.Models.KetBotContext context)
         {
             // -----------------------------------------------------------
@@ -73,7 +77,6 @@ namespace KetBot.Data.Migrations
                     Form = string.Join("\n", new string[]
                     {
                         "이용 관련",
-                        "상품권"
                     })
                 },
                 new SelectiveForm
@@ -111,8 +114,7 @@ namespace KetBot.Data.Migrations
                     {
                         "전환버튼 클릭 후 반응이 없어요.",
                         "본인인증 과정에서 오류가 있어요.",
-                        "보안문자 입력 과정에서 오류가 있어요.",
-                        "포인트 통합을 했는데 그대로에요."
+                        "보안문자 입력 과정에서 오류가 있어요."
                     })
                 },
                 new SelectiveForm
@@ -185,19 +187,6 @@ namespace KetBot.Data.Migrations
                         "상품 사용 방법을 알고싶어요.",
                         "사용 내역을 확인하고 싶어요.",
                         "다른 상품으로 교환하고 싶어요.",
-                        "핀켓 상점 외의 곳에서 사용하고 싶어요.",
-                        "해피머니 상품권 사용법을 알려주세요."
-                    })
-                },
-                new SelectiveForm
-                {
-                    Code = "52",
-                    Form = string.Join("\n", new string[]
-                    {
-                        "상품권 사용 방법을 알고싶어요.",
-                        "상품권 수령은 어떻게 하나요?",
-                        "상품권 기한이 지나버렸어요.",
-                        "모바일 상품권 사용 잔액을 알려주세요."
                     })
                 },
                 new SelectiveForm
@@ -244,10 +233,7 @@ namespace KetBot.Data.Migrations
                         "아이디(비밀번호)를 알려주세요.",
                         "아이디 변경을 하고싶어요.",
                         "비밀번호를 변경하고싶어요.",
-                        "이름을 바꾸고 싶어요.",
-                        "잠금화면을 해제하고싶어요.",
-                        "잠금화면 포인트 적립 주기를 알고싶어요.",
-                        "사용법을 가르쳐주세요."
+                        "이름을 바꾸고 싶어요."
                     })
                 },
                 new SelectiveForm
@@ -273,7 +259,7 @@ namespace KetBot.Data.Migrations
                          new Answer
                         {
                             Order = 10,
-                            Text = "질문하신 내용은 최신 앱 버전에서 패치가 적용되었습니다. 다음 방법대로 시도해보세요. :)"
+                            Text = "최신버전에서 해결되었어요. 다음 방법대로 시도해보세요. :)"
                         },
                         new Answer
                         {
@@ -283,7 +269,7 @@ namespace KetBot.Data.Migrations
                         new Answer
                         {
                             Order = 30,
-                            Text = "이후에도 동일한 문제가 발생한다면, 매니저에게 물어봐주세요!!"
+                            Text = "계속 문제가 발생하면, 고객센터로 문의해주세요. "
                         }
                     }
                 },
@@ -297,7 +283,7 @@ namespace KetBot.Data.Migrations
                          new Answer
                         {
                             Order = 10,
-                            Text = "질문하신 내용은 최신 앱 버전에서 패치가 적용되었습니다. 다음 방법대로 시도해보세요. :)"
+                            Text = "최신버전에서 해결되었어요. 다음 방법대로 시도해보세요. :)"
                         },
                         new Answer
                         {
@@ -307,7 +293,7 @@ namespace KetBot.Data.Migrations
                         new Answer
                         {
                             Order = 30,
-                            Text = "이후에도 동일한 문제가 발생한다면, 매니저에게 물어봐주세요!!"
+                            Text = "계속 문제가 발생하면, 고객센터로 문의해주세요. "
                         }
                     }
                 },
@@ -315,13 +301,13 @@ namespace KetBot.Data.Migrations
                 {
                     Code = "113",
                     Keyword = "보안문자",
-                    Question = "보안문자 입력 과정에서 오류가 있어요.",
+                    Question = "보안문자 입력이 안되고 오류가 있어요.",
                     Answers = new System.Collections.Generic.List<Answer>()
                     {
                          new Answer
                         {
                             Order = 10,
-                            Text = "질문하신 내용은 최신 앱 버전에서 패치가 적용되었습니다. 다음 방법대로 시도해보세요. :)"
+                            Text = "최신버전에서 해결되었어요. 다음 방법대로 시도해보세요. :)"
                         },
                         new Answer
                         {
@@ -331,31 +317,7 @@ namespace KetBot.Data.Migrations
                         new Answer
                         {
                             Order = 30,
-                            Text = "이후에도 동일한 문제가 발생한다면, 매니저에게 물어봐주세요!!"
-                        }
-                    }
-                },
-                new ExecutiveQuestion
-                {
-                    Code = "114",
-                    Keyword = "연체/해지 관련",
-                    Question = "포인트 통합을 했는데 그대로에요.",
-                    Answers = new System.Collections.Generic.List<Answer>()
-                    {
-                         new Answer
-                        {
-                            Order = 10,
-                            Text = "말씀하신 내용은 보통 몇 가지 이유가 있어요."
-                        },
-                        new Answer
-                        {
-                            Order = 20,
-                            Text = "1. 통합하시려는 금융사에 연체기록이 있거나 해지하신 경우 2. 통합하시려는 액수가 금융사에서 정한 액수보다 작거나 큰 경우"
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "1번의 경우, 해당 카드사로 직접 문의해 보세요. 2번의 경우에는 금융사마다 다르지만 보통 한 번에 100원 혹은 500원 이상, 50만원 이하만 통합 가능하답니다."
+                            Text = "계속 문제가 발생하면, 고객센터로 문의해주세요. "
                         }
                     }
                 },
@@ -369,17 +331,12 @@ namespace KetBot.Data.Migrations
                          new Answer
                         {
                             Order = 10,
-                            Text = "이런!! 많이 놀라셨겠네요. 하지만 걱정 마세요!!"
+                            Text = "포인트 통합 취소는 고객센터로 직접 연락해주세요."
                         },
                         new Answer
                         {
                             Order = 20,
-                            Text = "입력창을 통해서 매니저님에게 물어보면 해결해 주실 수 있어요."
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "보통 전산처리 기간에 따라 2~3영업일이 걸린다고 하네요."
+                            Text = "상황을 자세히 말씀해주세요."
                         }
                     }
                 },
@@ -393,36 +350,31 @@ namespace KetBot.Data.Migrations
                          new Answer
                         {
                             Order = 10,
-                            Text = " 포인트 통합 취소는, 입력창을 통해서 매니저님에게 직접 요청하셔야 한답니다.]"
+                            Text = "포인트 통합 취소는 고객센터로 직접 연락해주세요."
                         },
                         new Answer
                         {
                             Order = 20,
-                            Text = "제 권한 밖이지만 매니저님께 상황을 말씀드리면 해결해주실꺼에요!"
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "보통 전산처리 기간에 따라 2~3영업일이 걸린다고 하네요."
+                            Text = "상황을 자세히 말씀해주세요."
                         }
                     }
                 },
                 new ExecutiveQuestion
                 {
                     Code = "131",
-                    Keyword = "제휴처 외 카드사",
-                    Question = "다른 카드사 포인트를 통합하고 싶어요.",
+                    Keyword = "다른 포인트",
+                    Question = "리스트에 없는 포인트를 통합하고 싶어요.",
                     Answers = new System.Collections.Generic.List<Answer>()
                     {
                          new Answer
                         {
                             Order = 10,
-                            Text = "아쉽게도, 제휴리스트에 없는 카드사는 아직 통합하실 수 없어요. ㅠㅡ"
+                            Text = "리스트에 없으면 아직 통합하실 수 없어요."
                         },
                         new Answer
                         {
                             Order = 20,
-                            Text = "점점 더 많은 곳과 제휴중이니, 곧 가능할꺼에요!"
+                            Text = "가능하도록 노력하겠습니다. "
                         }
                     }
                 },
@@ -430,13 +382,13 @@ namespace KetBot.Data.Migrations
                 {
                     Code = "132",
                     Keyword = "역통합",
-                    Question = "통합한 포인트를 다른 카드사로 옮겨 주세요.",
+                    Question = "통합한 포인트를 옮겨 주세요.",
                     Answers = new System.Collections.Generic.List<Answer>()
                     {
                          new Answer
                         {
                             Order = 10,
-                            Text = "카드사마다 약관이 다르기 때문에, 통합한 포인트를 다른 카드사로 옮길 수는 없어요."
+                            Text = "포인트를 옮길 수는 없어요."
                         }
                     }
                 },
@@ -455,7 +407,7 @@ namespace KetBot.Data.Migrations
                         new Answer
                         {
                             Order = 20,
-                            Text = "탈퇴를 하실 경우 팝업창에서 먼저 주의를 드리니, 꼭 확인해주세요."
+                            Text = "탈퇴 주의사항을 꼭 일어주세요."
                         }
                     }
                 },
@@ -506,18 +458,18 @@ namespace KetBot.Data.Migrations
                 {
                     Code = "311",
                     Keyword = "포인트 미적립",
-                    Question = "적립이 안됐어요.",
+                    Question = "포인트 적립이 안되요.",
                     Answers = new System.Collections.Generic.List<Answer>()
                     {
                          new Answer
                         {
                             Order = 10,
-                            Text = "이럴수가.. 얼른 해결해 드릴께요!!"
+                            Text = "바로 해결해 드릴께요!!"
                         },
                         new Answer
                         {
                             Order = 20,
-                            Text = "바로적립 광고 참여의 경우에는, 바로적립 화면 왼쪽 위를 누르셔서 해당 광고사에 문의를 하시면 상세하게 답변을 받으실 수 있구요."
+                            Text = "바로적립 화면 왼쪽 위를 누르셔서 해당 광고사에 문의를 하시면 상세하게 답변을 받으실 수 있구요."
                         },
                         new Answer
                         {
@@ -541,7 +493,7 @@ namespace KetBot.Data.Migrations
                         new Answer
                         {
                             Order = 20,
-                            Text = "바로적립 참여를 통해 100포인트부터 무려 2000포인트 가까이 한 번에 모으실 수 있답니다. "
+                            Text = "이벤트 참여를 통해서 포인트를 많이 모을 수 있습니다.  "
                         },
                         new Answer
                         {
@@ -599,16 +551,6 @@ namespace KetBot.Data.Migrations
                         {
                             Order = 10,
                             Text = "멤버십 등록은 이렇게!"
-                        },
-                        new Answer
-                        {
-                            Order = 20,
-                            Text = @"https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmadupfinket%2Fposts%2F1658200141137008&width=500"
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "해당 페이스북 링크를 타고 가시면, 멤버십의 모든 것을 알 수 있어요."
                         }
                     }
                 },
@@ -641,17 +583,12 @@ namespace KetBot.Data.Migrations
                          new Answer
                         {
                             Order = 10,
-                            Text = "열심히 모은 그대, 잘 써라!!"
+                            Text = "포인트는 쓰려고 모으는 것이죠."
                         },
                         new Answer
                         {
                             Order = 20,
-                            Text = "구매하신 상품은 해당 매장에서 보관함의 쿠폰을 보여주는 것으로 사용하실 수 있어요."
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "해피포인트나 문화상품권은 충전해서 쓰실 수도 있답니다."
+                            Text = "매장에서 쿠폰을 보여주세요."
                         }
                     }
                 },
@@ -695,145 +632,6 @@ namespace KetBot.Data.Migrations
                         {
                             Order = 20,
                             Text = "우선, 매니저님에게 상품 취소를 문의해주세요. :)"
-                        }
-                    }
-                },
-                new ExecutiveQuestion
-                {
-                    Code = "514",
-                    Keyword = "사용처",
-                    Question = "핀켓 상점 외의 곳에서 사용하고 싶어요.",
-                    Answers = new System.Collections.Generic.List<Answer>()
-                    {
-                         new Answer
-                        {
-                            Order = 10,
-                            Text = "이런.. 핀켓상점으로는 부족하신거군요!"
-                        },
-                        new Answer
-                        {
-                            Order = 20,
-                            Text = "현재 더 다양한 상품 및 소비처를 만들기 위해 노력하고 있으니 조금만 더 기다려주세요!"
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "이외에도 상품권 구매를 통해서 사용하시는 방법도 있답니다."
-                        }
-                    }
-                },
-                new ExecutiveQuestion
-                {
-                    Code = "515",
-                    Keyword = "사용법",
-                    Question = "해피머니 상품권 사용법을 알려주세요.",
-                    Answers = new System.Collections.Generic.List<Answer>()
-                    {
-                         new Answer
-                        {
-                            Order = 10,
-                            Text = "해피머니 사용법이 궁금하신거군요!"
-                        },
-                        new Answer
-                        {
-                            Order = 20,
-                            Text = "우선, 해피머니상품권 홈페이지 방문 > 로그인 > 홈페이지 상단의 '상품권' > '상품권 교환소' 클릭 > '아이넘버'를 선택해주세요. "
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "그리고 교환권번호(위 번호 12자리)입력 > 확인버튼을 누르시면 휴대폰으로 16자리 핀번호돠 발행일을 확인하실 수 있답니다."
-                        }
-                    }
-                },
-                new ExecutiveQuestion
-                {
-                    Code = "521",
-                    Keyword = "사용법",
-                    Question = "상품권 사용 방법을 알고싶어요.",
-                    Answers = new System.Collections.Generic.List<Answer>()
-                    {
-                         new Answer
-                        {
-                            Order = 10,
-                            Text = "상품권 사용 말씀이시군요."
-                        },
-                        new Answer
-                        {
-                            Order = 20,
-                            Text = "상품권은 해당 매장에서 핀켓 어플리케이션 내 '보관함'의 해당 상품권 바코드를 보여주시면 교환 혹은 사용이 가능해요. "
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "또, 문화상품권과 해피머니는 온라인에서 쿠폰번호를 이용해 충전이 가능하답니다."
-                        }
-                    }
-                },
-                new ExecutiveQuestion
-                {
-                    Code = "522",
-                    Keyword = "사용법",
-                    Question = "상품권 수령은 어떻게 하나요?",
-                    Answers = new System.Collections.Generic.List<Answer>()
-                    {
-                         new Answer
-                        {
-                            Order = 10,
-                            Text = "상품권 수령은 말이죠. 일단 사용 가능한 매장을 방문해 주세요."
-                        },
-                        new Answer
-                        {
-                            Order = 20,
-                            Text = "그리고, 해당 매장에서 핀켓 어플리케이션 내 '보관함'의 해당 상품권 바코드를 보여주시면 교환 혹은 사용이 가능해요. "
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "문화상품권과 해피머니는 별도의 수령 없이 온라인으로 충전하실 수도 있지요."
-                        }
-                    }
-                },
-                new ExecutiveQuestion
-                {
-                    Code = "523",
-                    Keyword = "기한연장",
-                    Question = "상품권 기한이 지나버렸어요.",
-                    Answers = new System.Collections.Generic.List<Answer>()
-                    {
-                         new Answer
-                        {
-                            Order = 10,
-                            Text = "저런 저런, 기한이 지나버렸군요."
-                        },
-                        new Answer
-                        {
-                            Order = 20,
-                            Text = "상품권은 '1회에 한해 30일 연장'이 가능하답니다. 잊지 말고 꼭 기한 안에 사용해주세요."
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "참, 제휴사측에 연장처리를 요청하기 위해 매니저님께 유효기간이 지난 상품권 번호를 잊지 말고 보내주세요. :)"
-                        }
-                    }
-                },
-                new ExecutiveQuestion
-                {
-                    Code = "524",
-                    Keyword = "잔액 확인",
-                    Question = "모바일 상품권 사용 잔액을 알려주세요.",
-                    Answers = new System.Collections.Generic.List<Answer>()
-                    {
-                         new Answer
-                        {
-                            Order = 10,
-                            Text = "상품권 잔액이 궁금하신가요??"
-                        },
-                        new Answer
-                        {
-                            Order = 20,
-                            Text = "잔액 확인은 상품권 사용이 가능한 어느 매장에서든 상품권 번호를 말씀하시면 확인이 가능하답니다. :)"
                         }
                     }
                 },
@@ -885,7 +683,7 @@ namespace KetBot.Data.Migrations
                          new Answer
                         {
                             Order = 10,
-                            Text = "Wow!! 회원님의 반짝이는 아이디어는 언제나 환영입니다!"
+                            Text = "회원님의 아이디어는 항상 환영합니다."
                         },
                         new Answer
                         {
@@ -977,11 +775,6 @@ namespace KetBot.Data.Migrations
                         {
                             Order = 20,
                             Text = "잠시 서버에 문제가 있거나, 회원님 기기의 통신상태가 안좋을 수 있습니다. 잠시 후 다시 시행해주세요."
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "그래도 여전히 로그인이 되지 않는다면, 매니저님께 기종과 버전을 함께 문의 주시면 해결해 드릴꺼에요."
                         }
                     }
                 },
@@ -1000,7 +793,7 @@ namespace KetBot.Data.Migrations
                         new Answer
                         {
                             Order = 20,
-                            Text = "로그아웃 방법은 '핀켓 앱 실행' > '사용자설정' > '나의 정보' 에 들어가셔서 로그아웃 버튼을 누르시면 된답니다."
+                            Text = "로그아웃 방법은 앱상단의 로그아웃 버튼을 누르시면 된답니다."
                         }
                     }
                 },
@@ -1044,11 +837,6 @@ namespace KetBot.Data.Migrations
                         {
                             Order = 20,
                             Text = "아쉽게도 아이디는 본인인증 및 휴대폰과 연동되어 변경이 불가능합니다."
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "금융 서비스의 특성상 변경 절차가 까다로운 점 양해 부탁드려요."
                         }
                     }
                 },
@@ -1081,79 +869,12 @@ namespace KetBot.Data.Migrations
                          new Answer
                         {
                             Order = 10,
-                            Text = "이름을 바꾸고 싶으시군요! 저도 제 이름 '켓'을 가끔 '캣'으로 쓰다가 고친답니다."
+                            Text = "이름을 바꾸고 싶으시군요!"
                         },
                         new Answer
                         {
                             Order = 20,
                             Text = "변경하시고 싶은 이름을 매니저님께 보내주세요. 그럼 바로 처리해드릴꺼에요!"
-                        }
-                    }
-                },
-                new ExecutiveQuestion
-                {
-                    Code = "747",
-                    Keyword = "잠금화면",
-                    Question = "잠금화면을 해제하고싶어요.",
-                    Answers = new System.Collections.Generic.List<Answer>()
-                    {
-                         new Answer
-                        {
-                            Order = 10,
-                            Text = "잠금화면이 불편하셨나요??"
-                        },
-                        new Answer
-                        {
-                            Order = 20,
-                            Text = "잠금화면 해제는 핀켓 어플리케이션을 실행 하신 후 '사용자 설정' > '잠금화면 설정' 에서 하실 수 있답니다."
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "잠금화면을 통해서 컨텐츠도 읽고 추가 포인트도 적립받을 수 있으니 한 번 더 생각해주세요! :)"
-                        }
-                    }
-                },
-                new ExecutiveQuestion
-                {
-                    Code = "748",
-                    Keyword = "잠금화면",
-                    Question = "잠금화면 포인트 적립 주기를 알고싶어요.",
-                    Answers = new System.Collections.Generic.List<Answer>()
-                    {
-                         new Answer
-                        {
-                            Order = 10,
-                            Text = "앗! 포인트 적립 주기는 제 비밀인데요!"
-                        },
-                        new Answer
-                        {
-                            Order = 20,
-                            Text = "몰래 말씀드리는건데, 삼십분에 2~3포인트 정도 쌓인답니다. 각종 광고를 보시면 훨씬! 많이 쌓이겠죠?"
-                        }
-                    }
-                },
-                new ExecutiveQuestion
-                {
-                    Code = "749",
-                    Keyword = "사용법",
-                    Question = "사용법을 가르쳐주세요.",
-                    Answers = new System.Collections.Generic.List<Answer>()
-                    {
-                         new Answer
-                        {
-                            Order = 10,
-                            Text = "오! 사용법이요? 사용법은 물론 재미난 이야기는 덤!"
-                        },
-                        new Answer
-                        {
-                            Order = 20,
-                            Text = "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fmadupfinket%2Fposts%2F1645271335763222&width=500"
-                        },
-                        new Answer
-                        {
-                            Order = 30,
-                            Text = "위의 링크를 누르시면 페이스북의 핀켓 페이지에서 유용한 정보와 사용법을 한 번에 보실 수 있어요. :)"
                         }
                     }
                 },
@@ -1167,12 +888,12 @@ namespace KetBot.Data.Migrations
                          new Answer
                         {
                             Order = 10,
-                            Text = "고객센터는 총 세 가지 방법으로 이용하실 수 있어요."
+                            Text = "가장 빠른 방법을 알려드릴께요. "
                         },
                         new Answer
                         {
                             Order = 20,
-                            Text = "1. 저에게 물어보시면 되구요! 2. 매니저님에게 물어보시면 제가 못도와드린 내용 도와드릴꺼에요. 그리고 3. 카카오 플러스 친구에서 'finket'을 검색하시면, 매니저님과 대화가 가능하답니다. ]"
+                            Text = " 카카오 플러스 친구에서 'finket'을 검색하시면, 빠르게 대화가 가능하답니다. ]"
                         }
                     }
                 }
