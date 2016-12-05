@@ -3,7 +3,14 @@ English version is here.
 핀켓 CS ChatBot
 ==================
 
+<<<<<<< HEAD
 [매드업](http://madup.com)과 마이크로소프트가 함께 HackFest를 통해서 [핀켓 앱](http://finket.co.kr/)의 CS(Customer Satisfaction) 기능을 강화하기 위해 ChatBot을 만들었습니다. 자세한 소개는 "[핀켓 CS Chatbot 만들기](https://blogs.msdn.microsoft.com/eva/?p=12706)"를 참조 바랍니다. 
+=======
+<p><a href="https://youtu.be/iUrwiaHB7p4" target="_blank"><img src="https://raw.githubusercontent.com/MadupPinket/ket-bot/master/docs/images/FINKET%20DEmo.jpg" alt="FINKET Demo" style="max-width:100%;"></a></p>
+
+
+[매드업](http://madup.com)과 마이크로소프트가 함께 HackFest를 통해서 [핀켓 앱](http://finket.co.kr/)의 CS(Customer Satisfaction) 기능을 강화하기 위해 ChatBot을 만들었습니다. 자세한 소개는 "핀켓 CS Chatbot 만들기"문서를 참조 바랍니다. 
+>>>>>>> 1e148470bbd22b4d3c7773a1f178a03a3e848757
 
 [Microsoft Bot Framework](https://dev.botframework.com/)는 Bot을 만들기 위해 마이크로소프트가 운영하는 서비스와 SDK입니다. Bot Connector라는 서비스를 중심으로 Skype, Facebook Messenger등의 채널을 우리가 만들 Bot에 연결시켜 줍니다. Node.js 와 C# 을 지원하는 Bot Builder SDK를 사용하면 빠르게 Bot을 만들 수 있습니다. 본 과제에서는 C#을 사용했습니다. 
 

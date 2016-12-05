@@ -1,4 +1,3 @@
-English version is here.
 
 핀켓 CS ChatBot
 ==================
