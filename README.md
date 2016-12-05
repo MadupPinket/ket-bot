@@ -68,12 +68,19 @@ IDialog를 상속받은 xxxDialog들이 Chain으로 연결되어 작동된다. D
 ## Microsoft Bot Framework 기초 강좌 
 
 [Microsoft Bot Framework 시작해보기 (1)](http://youngwook.com/220833049518)
+
 [Microsoft Bot Framework 시작해보기 (2) Hello Bot Framework](http://youngwook.com/220833329084)
+
 [Microsoft Bot Framework 시작해보기 (3) Bot Application 배포](http://youngwook.com/220833898434)
+
 [Microsoft Bot Framework 시작해보기 (4) Bot 등록과 스카이프에서 테스트 하기](http://youngwook.com/220838138807)
+
 [[Microsoft Bot Framework] Direct Line REST API 3.0](https://blogs.msdn.microsoft.com/eva/?p=12625)
+
 [[Microsoft Bot Framework] Dialog를 사용하여 대화의 흐름 만들기](https://blogs.msdn.microsoft.com/eva/?p=12705)
+
 [[Microsoft Bot Framework] 상태저장을 위한 Bot State Service](https://blogs.msdn.microsoft.com/eva/?p=12715)
+
 
 *Enjoy with your bot!!*
 
